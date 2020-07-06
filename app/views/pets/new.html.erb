@@ -1,0 +1,38 @@
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= @shelter.name %>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <%= form_tag "/shelters/#{@shelter.id}/pets", method: :post  do %>
+    <div class="field">
+      <%= label_tag :name, nil, class: "label" %>
+      <%= text_field_tag :name, nil, class: "input" %>
+    </div>
+    <div class="field is-grouped">
+    <p class="control is-expanded">
+        <%= label_tag :age,nil , class: "label" %>
+        <%= number_field_tag :age, nil, class: "input", max:16 %>
+    </p>
+    <div class="control">
+      <%= label_tag :sex,nil , class: "label" %>
+      <div class="select">
+        <%= select_tag :sex, options_for_select(Pet.sexes.map{|key, value| [key.capitalize, value]})%>
+      </div>
+    </div>
+  </div>
+    <div class="field">
+      <%= label_tag :image, nil, class: "label" %>
+      <%= url_field_tag :image, nil, class: "input", placeholder: "https://" %>
+    </div>
+    <div class="field">
+      <%= label_tag :description, nil, class: "label" %>
+      <%= text_area_tag :description, nil, class: "textarea", rows: 10 %>
+    </div>
+    <%= submit_tag 'Create Pet', class: "button is-primary" %>
+  <% end %>
+</section>

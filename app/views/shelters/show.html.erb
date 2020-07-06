@@ -1,0 +1,25 @@
+<section class="hero is-medium has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= @shelter.name %>
+      </h1>
+    </div>
+  </div>
+</section>
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <p><span>Address:</span> <%= @shelter.address %></p>
+      <p><span>City:</span> <%= @shelter.city %></p>
+      <p><span>State:</span> <%= @shelter.state %></p>
+      <p><span>Zip:</span> <%= @shelter.zip %></p>
+    </div>
+  </div>
+  <footer class="card-footer">
+    <%= link_to "edit", "/shelters/#{@shelter.id}/edit", class: "card-footer-item" %>
+    <%= link_to "delete", "/shelters/#{@shelter.id}", method: :delete, class: "card-footer-item" %>
+    <%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new", class: "card-footer-item" %>
+    <%= link_to "Pets", "/shelters/#{@shelter.id}/pets", class: "card-footer-item" %>
+  </footer>
+</div>

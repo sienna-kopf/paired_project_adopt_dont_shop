@@ -1,0 +1,52 @@
+
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Add Shelter
+        </h1>
+      </div>
+    </div>
+  </div>
+  <%= form_tag"/shelters", method: :post do %>
+  <div class="field">
+    <%= label_tag :name, nil, class: "label" %>
+    <%= text_field_tag :name, nil, class: "input" %>
+  </div>
+  <div class="field">
+    <%= label_tag :address, nil, class: "label" %>
+    <%= text_field_tag :address, nil, class: "input" %>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded">
+          <%= label_tag :city, nil, class: "label" %>
+          <%= text_field_tag :city, nil, class: "input" %>
+        </p>
+      </div>
+      <div class="field">
+        <div class="control is-expanded">
+          <%= label_tag :state, nil, class: "label" %>
+          <div class="select">
+            <%= select_tag :state, options_for_select(
+            [ 'Choose state','AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
+            'OR', 'PW', 'PA', 'PR',
+             'RI', 'SC', 'SD', 'TN',
+             'TX', 'UT', 'VT', 'VI', 'VA',
+             'WA', 'WV', 'WI', 'WY' ]),
+              class: "input" %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= label_tag :zip, nil, class: "label" %>
+    <%= text_field_tag :zip, nil, class: "input" %>
+  </div>
+  <%= submit_tag 'Submit', class: "button is-primary" %>
+  <% end %>
+</section>

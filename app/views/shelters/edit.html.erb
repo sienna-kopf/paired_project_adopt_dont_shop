@@ -1,0 +1,51 @@
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Edit Shelter
+        </h1>
+      </div>
+    </div>
+  </div>
+  <%= form_tag"/shelters/#{@shelter.id}", method: :patch do %>
+  <div class="field">
+    <%= label_tag :name, nil, class: "label" %>
+    <%= text_field_tag :name, @shelter.name, class: "input" %>
+  </div>
+  <div class="field">
+    <%= label_tag :address, nil, class: "label" %>
+    <%= text_field_tag :address, @shelter.address, class: "input" %>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded">
+          <%= label_tag :city, nil, class: "label" %>
+          <%= text_field_tag :city, @shelter.city, class: "input" %>
+        </p>
+      </div>
+      <div class="field">
+        <div class="control is-expanded">
+          <%= label_tag :state, nil, class: "label" %>
+          <div class="select">
+            <%= select_tag :state, options_for_select(
+            [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
+            'OR', 'PW', 'PA', 'PR',
+             'RI', 'SC', 'SD', 'TN',
+             'TX', 'UT', 'VT', 'VI', 'VA',
+             'WA', 'WV', 'WI', 'WY' ],@shelter.state),
+              class: "input" %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <%= label_tag :zip, nil, class: "label" %>
+    <%= text_field_tag :zip, @shelter.zip, class: "input" %>
+  </div>
+  <%= submit_tag 'update', class: "button is-primary" %>
+  <% end %>
+</section>

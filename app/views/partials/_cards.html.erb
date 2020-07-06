@@ -1,0 +1,30 @@
+
+<div class="cards">
+<div class="columns is-multiline">
+    <% @pets.each do |pet| %>
+    <div class="column is-3" id="pet_<%= pet.id %>">
+      <a href="/pets/<%= pet.id %>">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src=<%= pet.image %> alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+          <%= link_to  "Shelter name: #{pet.shelter.name}", "/shelters/#{pet.shelter_id}"%>
+        <p><span>Name: </span><%= pet.name %></p>
+        <p><span>Age: </span><%= pet.age %></p>
+        <p><span>Sex: </span><%= pet.sex %></p>
+        <p><span class="tag is-primary"><%= pet.status %> </span></p>
+        <p><span>Description: </span><%= pet.description %></p>
+        </div>
+        <footer class="card-footer">
+          <%= link_to "edit", "/pets/#{pet.id}/edit", class: "card-footer-item is-primary" %>
+          <%= link_to "delete", "/pets/#{pet.id}", method: :delete, class: "card-footer-item is-danger", data:{confirm: "You are deleting #{pet.name}. Are you sure?"}%>
+        </footer>
+      </div>
+      </a>
+    </div>
+    <% end %>
+</div>
+</div>

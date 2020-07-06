@@ -1,0 +1,32 @@
+
+<section class="hero is-medium has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Shelters
+      </h1>
+    </div>
+  </div>
+</section>
+<%= link_to "sort A-Z", "/shelters?sort=true", class: "button is-primary" %>
+<% @shelters.each do |shelter| %>
+
+  <div class="card shelter" id="shelter_<%= shelter.id %>">
+    <a href="/shelters/<%= shelter.id %>" >
+
+    <div class="card-content has-text-centered">
+      <div class="content">
+        <p><%= shelter.name %></p>
+        <div class="buttons btn">
+          <%= button_to "Delete", "/shelters/#{shelter.id}", method: :delete, class: "button is-danger is-rounded" , data:{confirm: "You are deleting #{shelter.name}. Are you sure?"}%>
+          <%= button_to "Edit", "/shelters/#{shelter.id}/edit", method: :get, class: "button is-primary is-rounded"%>
+        </div>
+      </div>
+
+
+    </div>
+  </a>
+  </div>
+<% end %>
+
+<%= link_to "New Shelter", "/shelters/new", class: "button is-success", id: "shel_create" %>
