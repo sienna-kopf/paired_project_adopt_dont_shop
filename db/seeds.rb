@@ -18,3 +18,8 @@ include FactoryBot::Syntax::Methods
  create_list(:pet, 8, shelter: @shelter_2)
  create_list(:pet, 9, shelter: @shelter_3)
  create_list(:pet, 12, shelter: @shelter_4)
+
+ create_list(:review, 2, shelter: @shelter_1)
+ create_list(:review, 4, shelter: @shelter_2)
+ create_list(:review, 5, shelter: @shelter_3)
+ create_list(:review, 1, shelter: @shelter_4)
