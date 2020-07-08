@@ -18,12 +18,12 @@ class ReviewsController < ApplicationController
     shelter = Shelter.find(params[:shelter_id])
     @review = shelter.reviews.new(review_params)
 
-    if !@review.save
-      flash[:notice] = "Review not created. Missing information."
-      return redirect_to "/shelters/#{shelter.id}/new"
+    if @review.save
+      redirect_to "/shelters/#{shelter.id}"
+    else
+      flash[:notice] = @review.errors.full_messages
+      redirect_to "/shelters/#{shelter.id}/new"
     end
-
-    redirect_to "/shelters/#{shelter.id}"
   end
 
   private
