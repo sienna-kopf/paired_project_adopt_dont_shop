@@ -16,7 +16,13 @@ class ReviewsController < ApplicationController
 
   def create
     shelter = Shelter.find(params[:shelter_id])
-    @review = shelter.reviews.create!(review_params)
+    @review = shelter.reviews.create(review_params)
+
+    while !@review.save
+      flash[:alert] = "Review not created. Missing information."
+      return redirect_to "/shelters/#{shelter.id}/new"
+    end
+
     redirect_to "/shelters/#{shelter.id}"
   end
 

@@ -42,7 +42,7 @@ RSpec.describe "user can create review", type: :feature do
     click_on "submit review"
 
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/new")
-    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Review not created. Missing information.")
   end
 
   it "can not sumbit a review with multiple incomplete fields" do
@@ -55,8 +55,8 @@ RSpec.describe "user can create review", type: :feature do
     click_on "submit review"
 
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/new")
-    expect(page).to have_content("Rating can't be blank")
-    expect(page).to have_content("Content can't be blank")
+    expect(page).to have_content("Review not created. Missing information.")
+    expect(page).to have_content("Review not created. Missing information.")
   end
 
   it "can submit a review without an image" do

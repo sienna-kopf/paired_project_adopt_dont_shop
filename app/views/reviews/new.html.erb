@@ -8,6 +8,13 @@
       </div>
     </div>
   </div>
+
+  <% if flash[:alert] %>
+    <div class="notification is-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   <%= form_tag "/shelters/#{@shelter.id}", method: :post  do %>
     <div class="field">
       <%= label_tag :title, nil, class: "label" %>
