@@ -16,6 +16,7 @@ RSpec.describe "user can create review", type: :feature do
 
   it "can create a new review" do
     visit "/shelters/#{@shelter_1.id}/new"
+    expect(page).to_not have_content("Great Experience")
 
     fill_in :title, with: "Great Experience"
     fill_in :rating, with: 4
@@ -26,11 +27,9 @@ RSpec.describe "user can create review", type: :feature do
 
     expect(current_path).to eq("/shelters/#{@shelter_1.id}")
 
-
     expect(page).to have_content("Great Experience")
     expect(page).to have_content(4)
     expect(page).to have_content("Friendly staff, organized.")
     expect(page).to have_css("img[src*='smiley.jpg']")
-
   end
 end
