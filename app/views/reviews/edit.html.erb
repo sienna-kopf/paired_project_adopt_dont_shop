@@ -9,6 +9,15 @@
       </div>
     </div>
   </div>
+
+  <% if flash[:errors]  %>
+    <% flash[:errors].each do |error| %>
+    <div class="notification is-danger">
+      <!-- <button class="delete"></button> -->
+      <%= error %>
+    </div>
+    <% end %>
+  <% end %>
   <%= form_tag "/shelters/reviews/#{@review.id}", method: :patch  do %>
   <div class="field">
     <%= label_tag :title, nil, class: "label" %>
