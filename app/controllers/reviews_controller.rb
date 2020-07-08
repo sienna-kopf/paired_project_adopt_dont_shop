@@ -10,6 +10,10 @@ class ReviewsController < ApplicationController
     redirect_to "/shelters/#{review.shelter_id}"
   end
 
+  def new
+   @shelter = Shelter.find(params[:shelter_id])
+  end
+
   private
 
   def review_params
