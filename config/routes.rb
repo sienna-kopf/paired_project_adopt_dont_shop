@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   get "/pets/:pet_id/edit", to: 'pets#edit'
 
   patch "/pets/:pet_id/adoptible", to: 'pets#adoptible'
+
+  get "/shelters/reviews/:review_id/edit", to: 'reviews#edit'
+  patch "/shelters/reviews/:review_id", to: 'reviews#update'
 end

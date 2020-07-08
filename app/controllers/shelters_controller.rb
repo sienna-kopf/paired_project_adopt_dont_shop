@@ -8,6 +8,7 @@ class SheltersController < ApplicationController
   end
 
   def show
+    @reviews = @shelter.reviews.order(updated_at: :desc)
   end
 
   def new
