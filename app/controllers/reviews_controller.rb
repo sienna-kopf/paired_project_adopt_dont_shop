@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
     review = Review.find(params[:review_id])
     review.update(review_params)
 
+    if !review.save
+      flash[:errors] = review.errors.full_messages
+      return redirect_to "/shelters/reviews/#{review.id}/edit"
+    end
     redirect_to "/shelters/#{review.shelter_id}"
   end
 
