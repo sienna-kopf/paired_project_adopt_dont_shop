@@ -9,10 +9,10 @@
     </div>
   </div>
 
-  <% if flash[:alert] %>
-    <div class="notification is-danger">
-      <%= flash[:alert] %>
-    </div>
+  <% flash.each do |type, message| %>
+  <div class="notification is-danger">
+    <p> <%= message %></p>
+  </div>
   <% end %>
 
   <%= form_tag "/shelters/#{@shelter.id}", method: :post  do %>

@@ -45,7 +45,7 @@ RSpec.describe "user can create review", type: :feature do
     expect(page).to have_content("Review not created. Missing information.")
   end
 
-  it "can not sumbit a review with multiple incomplete fields" do
+  it "can not submit a review with multiple incomplete fields" do
     visit "/shelters/#{@shelter_1.id}/new"
 
     fill_in :title, with: "Great Experience"

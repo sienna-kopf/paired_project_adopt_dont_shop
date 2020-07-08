@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     @review = shelter.reviews.new(review_params)
 
     if !@review.save
-      flash[:alert] = "Review not created. Missing information."
+      flash[:notice] = "Review not created. Missing information."
       return redirect_to "/shelters/#{shelter.id}/new"
     end
 
