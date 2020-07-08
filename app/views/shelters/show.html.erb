@@ -36,7 +36,10 @@
     <% else %>
       <img src=<%= review.image %> alt="">
     <% end %>
-    <%= link_to "edit review", "/shelters/reviews/#{review.id}/edit" %>
+    <div>
+      <%= link_to "edit review", "/shelters/reviews/#{review.id}/edit" , class: "button is-primary is-small"%>
+      <%= link_to "delete review", "/shelters/reviews/#{review.id}" , method: :delete ,class: "button is-danger is-small", data:{confirm: "Are you sure?"}%>
+    </div>
     <hr>
   </div>
   <% end %>
