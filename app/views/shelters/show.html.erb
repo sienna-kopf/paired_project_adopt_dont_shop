@@ -23,3 +23,17 @@
     <%= link_to "Pets", "/shelters/#{@shelter.id}/pets", class: "card-footer-item" %>
   </footer>
 </div>
+
+<div class="reviews">
+  <h2>Reviews</h2>
+  <% @reviews.each do |review| %>
+    <h3><%= review.title %></h3>
+    <p><%= review.content %></p>
+    <p><%= review.rating %></p>
+    <% if review.image.nil? %>
+    <% else %>
+      <img src=<%= review.image %> alt="">
+    <% end %>
+    <hr>
+  <% end %>
+</div>
