@@ -1,0 +1,30 @@
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+           Add Review to <%= @shelter.name %>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <%= form_tag "/shelters/#{@shelter.id}", method: :post  do %>
+    <div class="field">
+      <%= label_tag :title, nil, class: "label" %>
+      <%= text_field_tag :title, nil, class: "input" %>
+    </div>
+    <p class="control is-expanded">
+        <%= label_tag :rating, nil , class: "label" %>
+        <%= number_field_tag :rating, nil, class: "input", max:5 %>
+    </p>
+    <div class="content">
+      <%= label_tag :content, nil, class: "label" %>
+      <%= text_area_tag :content, nil, class: "textarea", rows: 10 %>
+    </div>
+    <div class="field">
+      <%= label_tag :image, nil, class: "label" %>
+      <%= url_field_tag :image, nil, class: "input", placeholder: "https://" %>
+    </div>
+    <%= submit_tag 'Submit Review', class: "button is-primary" %>
+  <% end %>
+</section>
