@@ -1,0 +1,32 @@
+
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Edit Review
+        </h1>
+      </div>
+    </div>
+  </div>
+  <%= form_tag "/shelters/reviews/#{@review.id}", method: :patch  do %>
+  <div class="field">
+    <%= label_tag :title, nil, class: "label" %>
+    <%= text_field_tag :title, @review.title, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :image, nil, class: "label" %>
+    <%= text_field_tag :image, @review.image, class: "input" %>
+  </div>
+  <div class="field">
+    <%= label_tag :rating, nil, class: "label" %>
+    <%= number_field_tag :rating, @review.rating, class: "input" %>
+  </div>
+  <div class="field">
+    <%= label_tag :content, nil, class: "label" %>
+    <%= text_area_tag :content, @review.content, class: "textarea", rows: 10 %>
+  </div>
+  <%= submit_tag 'update review', class: "button is-primary" %>
+  <% end %>
+</section>
