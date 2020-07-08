@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+
+  <% if flash[:notice] %>
+  <% flash[:notice].each do |message| %>
+    <div class="notification is-danger">
+      <p> <%= message %></p>
+    </div>
+    <% end %>
+  <% end %>
+
   <%= form_tag "/shelters/#{@shelter.id}", method: :post  do %>
     <div class="field">
       <%= label_tag :title, nil, class: "label" %>
@@ -25,6 +34,6 @@
       <%= label_tag :image, nil, class: "label" %>
       <%= url_field_tag :image, nil, class: "input", placeholder: "https://" %>
     </div>
-    <%= submit_tag 'Submit Review', class: "button is-primary" %>
+    <%= submit_tag 'submit review', class: "button is-primary" %>
   <% end %>
 </section>
