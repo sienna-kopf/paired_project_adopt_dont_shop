@@ -20,15 +20,17 @@ RSpec.describe "user can create review", type: :feature do
     fill_in :title, with: "Great Experience"
     fill_in :rating, with: 4
     fill_in :content, with: "Friendly staff, organized."
-    # fill_in :image, with: Faker::Avatar.image( size: "100x100", format: "jpg")
+    fill_in :image, with: "smiley.jpg"
 
     click_on "Submit Review"
 
-    # new_review = Review.last
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+
 
     expect(page).to have_content("Great Experience")
     expect(page).to have_content(4)
-    expect(page).to have_content("Friendly staff, organized")
-    # expect(page).to have_css("img[src*='#{new_review.image}']")
+    expect(page).to have_content("Friendly staff, organized.")
+    expect(page).to have_css("img[src*='smiley.jpg']")
+
   end
 end
