@@ -13,7 +13,12 @@ class ReviewsController < ApplicationController
     end
     redirect_to "/shelters/#{review.shelter_id}"
   end
-
+  
+  def destroy
+    review = Review.destroy(params[:review_id])
+    redirect_to "/shelters/#{review.shelter_id}"
+  end
+  
   def new
    @shelter = Shelter.find(params[:shelter_id])
   end
@@ -28,7 +33,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = @review.errors.full_messages
       redirect_to "/shelters/#{shelter.id}/new"
     end
-  end
+  end 
 
   private
 
