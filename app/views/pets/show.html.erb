@@ -1,4 +1,4 @@
-<section class="hero is-medium has-text-centered">
+<section class="hero is-medium has-text-centered" id="header">
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
@@ -7,12 +7,20 @@
     </div>
   </div>
 </section>
+<% if flash %>
+  <% flash.each do |key, message| %>
+  <div class="notification is-success">
+    <%= message %>
+  </div>
+  <% end %>
+  <% end %>
 <div class="card">
   <div class="card-content">
     <div class="content">
       <figure class="image is-128x128 pet_image">
         <img src=<%= @pet.image %> alt=<%= @pet.name %> >
       </figure>
+      <%= link_to "add to favorites", "/pets/#{@pet.id}/favorite", method: :post%>
       <p><span>Age:</span> <%= @pet.age %></p>
       <p><span>Sex:</span> <%= @pet.sex %></p>
       <p><span>Status:</span><%= @pet.status %></p>
