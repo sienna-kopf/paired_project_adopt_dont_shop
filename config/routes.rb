@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   delete "/pets/:pet_id/favorite", to: 'favorites#destroy'
 
   delete "/favorites/:pet_id", to: 'favorites#remove'
+
+  delete "/favorites", to: 'favorites#remove_all'
 end

@@ -9,6 +9,7 @@ RSpec.describe Favorite do
     @pet_1 = create(:pet, name: "persy", age: 8, sex: "male", shelter: @shelter_1)
     @pet_2 = create(:pet, name: "piper", age: 12, sex: "female", shelter: @shelter_2)
     @pet_3 = create(:pet, name: "holie", age: 4, sex: "female", shelter: @shelter_2)
+    @pet_3 = create(:pet, name: "harry", age: 5, sex: "male", shelter: @shelter_2)
   end
 
   it 'has can count pets' do
@@ -38,5 +39,10 @@ RSpec.describe Favorite do
   it 'can find all pets' do
     @favorite.add_pet(@pet_3)
     expect(@favorite.find_pets).to eq([@pet_1, @pet_2, @pet_3])
+  end
+
+  it 'can remove all' do
+    @favorite.remove_all
+    expect(@favorite.find_pets).to eq([])
   end
 end
