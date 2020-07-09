@@ -16,6 +16,9 @@
   </div>
   <% end %>
 <% end %>
+<% if favorites.pet_data.empty? %>
+  <p>no favorited pets</p>
+<% else %>
 <section class="cards">
 <div class="columns is-multiline">
     <% @pets.each do |pet| %>
@@ -42,3 +45,4 @@
     <% end %>
 </div>
 </section>
+<% end %>
