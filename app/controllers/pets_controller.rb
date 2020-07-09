@@ -5,6 +5,7 @@ class PetsController < ApplicationController
   end
 
   def show
+    @fav_pets = favorites.pet_data
   end
 
   def new
