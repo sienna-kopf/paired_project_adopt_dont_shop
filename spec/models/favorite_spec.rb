@@ -24,4 +24,13 @@ RSpec.describe Favorite do
     expect(@favorite.count).to eq(2)
     expect(@favorite.pet_data).to eq([@pet_1.id, @pet_2.id])
   end
+
+  xit 'can remove from favorites' do
+    expect(@favorite.count).to eq(2)
+    expect(@favorite.pet_data).to eq([@pet_1.id, @pet_2.id])
+
+    @favorite.remove_pet(@pet_1)
+    expect(@favorite.count).to eq(1)
+    expect(@favorite.pet_data).to eq([@pet_2.id])
+  end
 end
