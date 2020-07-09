@@ -16,7 +16,7 @@ RSpec.describe 'favorite creation', type: :feature do
 
     expect(page).to have_link("add to favorites")
 
-    click_on "add to favorites"
+    click_link "add to favorites"
 
     expect(current_path).to eq("/pets/#{@pet_2.id}")
 
