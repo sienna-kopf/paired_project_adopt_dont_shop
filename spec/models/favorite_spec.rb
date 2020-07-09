@@ -33,6 +33,7 @@ RSpec.describe Favorite do
     @favorite.remove_pet(@pet_1)
     expect(@favorite.count).to eq(1)
     expect(@favorite.pet_data).to eq([@pet_2.id])
+  end
 
   it 'can find all pets' do
     @favorite.add_pet(@pet_3)
