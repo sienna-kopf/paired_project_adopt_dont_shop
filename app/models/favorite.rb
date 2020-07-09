@@ -12,11 +12,15 @@ class Favorite
   def add_pet(pet)
     @pet_data << pet.id
   end
-  
+
   def remove_pet(pet)
     @pet_data.delete(pet)
   end
-  
+
+  def remove_all
+    @pet_data.clear
+  end
+
   def find_pets
     @pet_data.map do |id|
       Pet.find(id)

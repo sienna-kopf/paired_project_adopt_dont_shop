@@ -32,4 +32,19 @@ RSpec.describe 'favorite removal', type: :feature do
     expect(page).to_not have_link("#{@pet_1.name}")
     expect(current_path).to eq("/favorites")
   end
+
+  it 'can remove all favorites' do
+    visit "/favorites"
+
+    expect(page).to have_link("#{@pet_2.name}")
+    expect(page).to have_link("#{@pet_3.name}")
+
+    click_link "remove all favorited pets"
+
+    expect(current_path).to eq("/favorites")
+    expect(page).to have_content("no favorited pets")
+    expect(page).to have_content("favorites: 0")
+    expect(page).to_not have_link("#{@pet_2.name}")
+    expect(page).to_not have_link("#{@pet_3.name}")
+  end
 end
