@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   def favorites
     session[:favorites] ||= []
-    binding.pry
     Favorite.new(session[:favorites])
   end
 end
