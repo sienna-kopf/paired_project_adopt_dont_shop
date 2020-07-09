@@ -10,6 +10,11 @@
 
   <div id="main_nav" class=" navbar-end">
     <div class="navbar-start">
+      <% if session[:favorites].nil? %>
+        <p class= "navbar-item">favorites: 0</p>
+      <% else %>
+        <p class= "navbar-item">favorites: <%= session[:favorites].size%></p>
+      <% end %>
       <%= link_to "Home", "/", class: "navbar-item" %>
       <%= link_to "pets", "/pets", class: "navbar-item" %>
       <%= link_to "shelters", "/shelters", class: "navbar-item" %>
