@@ -1,0 +1,35 @@
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Favorite Pets
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cards">
+<div class="columns is-multiline">
+    <% @pets.each do |pet| %>
+    <div class="column is-3" id="pet_<%= pet.id %>">
+      <a href="/pets/<%= pet.id %>">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src=<%= pet.image %> alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        Shelter name:   <%= link_to  "#{pet.shelter.name}", "/shelters/#{pet.shelter_id}"%>
+        </div>
+        <footer class="card-footer">
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
+        </footer>
+      </div>
+      </a>
+    </div>
+    <% end %>
+</div>
+</section>

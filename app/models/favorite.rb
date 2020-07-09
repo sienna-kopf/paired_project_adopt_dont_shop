@@ -12,4 +12,10 @@ class Favorite
   def add_pet(pet)
     @pet_data << pet.id
   end
+
+  def find_pets
+    @pet_data.map do |id|
+      Pet.find(id)
+    end
+  end
 end
