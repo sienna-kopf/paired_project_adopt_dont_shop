@@ -33,7 +33,7 @@ RSpec.describe "user favorites a pet" do
       expect(page).to have_link("add to favorites")
       expect(page).to_not have_link("remove from favorites")
 
-      expect(page).to have_content(favorites: 0)
+      expect(page).to have_content("favorites: 0")
     end
   end
 end

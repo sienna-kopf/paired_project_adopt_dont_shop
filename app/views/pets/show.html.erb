@@ -22,8 +22,8 @@
       <figure class="image is-128x128 pet_image">
         <img src=<%= @pet.image %> alt=<%= @pet.name %> >
       </figure>
-      <% if @fav_pets.include?(@pet.id) %>
-          <%= link_to "remove from favorites", "/pets/#{@pet.id}", method: :delete %>
+      <% if favorites.pet_data.include?(@pet.id) %>
+          <%= link_to "remove from favorites", "/pets/#{@pet.id}/favorite", method: :delete %>
       <% else %>
           <%= link_to "add to favorites", "/pets/#{@pet.id}/favorite", method: :post %>
       <% end %>

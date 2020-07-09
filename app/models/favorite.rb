@@ -12,4 +12,8 @@ class Favorite
   def add_pet(pet)
     @pet_data << pet.id
   end
+
+  def remove_pet(pet)
+    @pet_data.delete(pet)
+  end
 end
