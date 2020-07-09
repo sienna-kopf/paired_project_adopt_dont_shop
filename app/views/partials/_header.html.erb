@@ -13,6 +13,7 @@
       <% if session[:favorites].nil? %>
         <%= link_to "favorites: 0", "/favorites", class: "navbar-item" %>
       <% else %>
+        <p class= "navbar-item">favorites: <%= favorites.count %></p>
         <%= link_to "favorites: #{session[:favorites].size}","/favorites" ,class: "navbar-item"%>
       <% end %>
       <%= link_to "Home", "/", class: "navbar-item" %>
