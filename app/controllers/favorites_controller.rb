@@ -4,6 +4,7 @@ class FavoritesController <  ApplicationController
     pet = Pet.find(params[:pet_id])
     favorites.add_pet(pet)
     flash[:notice] =  "You have added #{pet.name} to favorites"
+    redirect_to "/pets/#{pet.id}"
   end
 
   def destroy
