@@ -12,17 +12,7 @@ RSpec.describe Pet, type: :model do
 
   describe 'relationships' do
     it{should belong_to :shelter}
-  end
-
-  describe 'has sex enum values' do
-    let :sex do {
-      male: 'male',
-      female: 'female'
-    }
-  end
-
-    it 'only valid enums' do
-
-    end
+    it{should have_many :pet_applications}
+    it { should have_many(:applicants).through(:pet_applications)}
   end
 end
