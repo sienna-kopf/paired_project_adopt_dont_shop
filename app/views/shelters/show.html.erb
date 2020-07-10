@@ -27,15 +27,10 @@
   <h2>Reviews</h2>
   <% @reviews.each do |review| %>
   <div class="reviews" id="review_<%=  review.id %>">
-
     <h3><%= review.title %></h3>
     <p><%= review.content %></p>
     <p><%= review.rating %></p>
-    <% if review.image == "" %>
-      <img src="" alt="">
-    <% else %>
-      <img src=<%= review.image %> alt="">
-    <% end %>
+    <img src="<%= review.image %>" alt="">
     <div>
       <%= link_to "edit review", "/shelters/reviews/#{review.id}/edit" , class: "button is-primary is-small"%>
       <%= link_to "delete review", "/shelters/reviews/#{review.id}" , method: :delete ,class: "button is-danger is-small", data:{confirm: "Are you sure?"}%>
