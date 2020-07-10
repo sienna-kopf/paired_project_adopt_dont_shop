@@ -24,8 +24,16 @@
   </div>
   <% end %>
 <% end %>
-
 <%= form_tag"/applications", method: :post do %>
+<h2 class="subtitle">Choose the pet to adopt.</h2>
+  <% favorites.find_pets.each do |pet| %>
+  <label class="checkbox">
+    <%= check_box_tag "pet_ids[]", pet.id %>
+    <%= pet.name %>
+  </label>
+  <br>
+  <% end %>
+
 <div class="field">
   <%= label_tag :name, nil, class: "label" %>
   <%= text_field_tag :name, nil, class: "input" %>
@@ -47,11 +55,11 @@
         <%= label_tag :state, nil, class: "label" %>
         <div class="select">
           <%= select_tag :state, options_for_select(
-          [ 'Choose state','AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
+          ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
           'OR', 'PW', 'PA', 'PR',
            'RI', 'SC', 'SD', 'TN',
            'TX', 'UT', 'VT', 'VI', 'VA',
-           'WA', 'WV', 'WI', 'WY' ]),
+           'WA', 'WV', 'WI', 'WY' ]),prompt: "Choose state",
             class: "input" %>
 
         </div>
