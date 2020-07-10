@@ -21,6 +21,8 @@ RSpec.describe "user can create application", type: :feature do
     click_on 'adopt favorites'
 
     expect(current_path).to eq("/applications/new")
+    expect(page).to have_content("persy")
+    expect(page).to have_content("piper")
 
     fill_in :name, with: "kwibe merci"
     fill_in :address, with: "3478 MLK"
