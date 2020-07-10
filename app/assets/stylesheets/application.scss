@@ -52,3 +52,25 @@ footer.footer{
   width: 50vw;
   margin: auto;
 }
+
+section.fav_footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
+section.fav-adopt {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+section.fav-remove-pet {
+    background: #f14668;
+    text-align: center;
+    padding: 10px;
+    a{
+      color: #fff;
+      padding: 13px 65px;
+    }
+}
