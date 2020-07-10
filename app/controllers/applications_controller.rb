@@ -9,7 +9,7 @@ class ApplicationsController < ApplicationController
       return redirect_to "/applications/new"
     end
     flash[:notice] = "Application has gone through"
-    favorites.pet_data.clear
+    favorites.remove_all
     redirect_to '/favorites'
   end
 
