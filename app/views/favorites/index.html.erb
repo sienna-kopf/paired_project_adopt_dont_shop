@@ -19,6 +19,9 @@
 <% if favorites.pet_data.empty? %>
   <p>no favorited pets</p>
 <% else %>
+<section class="fav-adopt">
+  <%= link_to "adopt favorites", "/applications/new", class: "button is-info" %>
+</section>
 <section class="cards">
 <div class="columns is-multiline">
     <% @pets.each do |pet| %>
@@ -36,7 +39,7 @@
         <footer class="card-footer">
         <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
         </footer>
-        <section id="pet-<%= pet.id%>">
+        <section class="fav-remove-pet" id="pet-<%= pet.id%>">
           <%= link_to "remove from favorites", "/favorites/#{pet.id}", method: :delete %>
         </section>
       </div>
@@ -45,5 +48,7 @@
     <% end %>
 </div>
 </section>
-<%= link_to "remove all favorited pets", "/favorites", method: :delete %>
+<section class="fav_footer">
+  <%= link_to "remove all favorited pets", "/favorites", method: :delete , class: "button is-danger"%>
+</section>
 <% end %>
