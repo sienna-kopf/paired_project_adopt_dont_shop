@@ -27,8 +27,8 @@
 <%= form_tag"/applications", method: :post do %>
 <h2 class="subtitle">Choose the pet to adopt.</h2>
   <% favorites.find_pets.each do |pet| %>
-  <label class="checkbox">
-    <%= check_box_tag "pet_ids[]", pet.id %>
+  <label class="checkbox-<%= pet.id %>">
+    <%= check_box_tag "pet_ids[]", pet.id, id: "pet_#{pet.id}" %>
     <%= pet.name %>
   </label>
   <br>
