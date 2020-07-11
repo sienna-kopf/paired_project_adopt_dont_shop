@@ -8,7 +8,9 @@ RSpec.describe "user can see list of pets with current applications", type: :fea
     @pet_2 = create(:pet, name: "piper", age: 12, sex: "female", shelter: @shelter_2)
     @pet_3 = create(:pet, name: "holie", age: 4, sex: "female", shelter: @shelter_1)
     @pet_4 = create(:pet , shelter:@shelter_2 )
+  end
 
+  it 'displays a list of pets that have current applications' do
     visit "/pets/#{@pet_2.id}"
     click_link "add to favorites"
     visit "/pets/#{@pet_1.id}"
@@ -30,7 +32,7 @@ RSpec.describe "user can see list of pets with current applications", type: :fea
     within(".checkbox-#{@pet_3.id}") do
       find("input[type='checkbox'][value='#{@pet_3.id}']").set(false)
     end
-    
+
     fill_in :name, with: "kwibe merci"
     fill_in :address, with: "3478 MLK"
     fill_in :city, with: "Denver"
@@ -40,12 +42,10 @@ RSpec.describe "user can see list of pets with current applications", type: :fea
     fill_in :description, with: "I love the pets. They will be my new babies ❤️"
 
     click_on "submit"
-  end
 
-  it 'displays a list of pets that have current applications' do
     visit "/favorites"
 
-    within("#application_pets") do
+    within("section#application_pets") do
       expect(page).to have_link("persy")
       expect(page).to have_link("piper")
       expect(page).to_not have_link("holie")

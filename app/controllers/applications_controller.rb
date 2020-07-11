@@ -9,9 +9,9 @@ class ApplicationsController < ApplicationController
       return redirect_to "/applications/new"
     end
     flash[:notice] = "Application has gone through"
-    binding.pry
+    application.pets << params[:pet_ids].map {|id| Pet.find(id)}
     favorites.remove_all
-    redirect_to '/favorites'
+    redirect_to "/favorites"
   end
 
   private
