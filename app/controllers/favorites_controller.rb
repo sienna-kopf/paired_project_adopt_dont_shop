@@ -16,6 +16,7 @@ class FavoritesController <  ApplicationController
 
   def index
     @pets = favorites.find_pets.reverse
+    @application_pets = PetApplication.pluck(:pet_id).uniq.map {|id| Pet.find(id)}
   end
 
   def remove

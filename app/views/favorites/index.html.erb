@@ -52,3 +52,8 @@
   <%= link_to "remove all favorited pets", "/favorites", method: :delete , class: "button is-danger"%>
 </section>
 <% end %>
+<section id="application_pets">
+  <% @application_pets.each do |pet| %>
+    <%= link_to pet.name, "/pets/#{pet.id}" %>
+  <% end %>
+</section>
