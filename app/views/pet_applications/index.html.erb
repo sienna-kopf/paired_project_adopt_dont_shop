@@ -1,0 +1,22 @@
+<section class="form_container">
+  <div class="hero is-medium has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Applications for <%= @pet.name %>
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+<% if @applicants.empty? %>
+  <p>no applications for <%= @pet.name %></p>
+<% else %>
+<section class="cards">
+<div class="columns is-multiline">
+    <% @applicants.each do |applicant| %>
+      <%= link_to "#{applicant.name}", "/applications/#{applicant.id}" %>
+    <% end %>
+</div>
+</section>
+<% end %>

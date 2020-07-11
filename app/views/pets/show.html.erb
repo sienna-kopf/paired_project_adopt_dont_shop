@@ -27,6 +27,7 @@
       <% else %>
           <%= link_to "add to favorites", "/pets/#{@pet.id}/favorite", method: :post %>
       <% end %>
+      <%= link_to "view applications for #{@pet.name}", "/pets/#{@pet.id}/applications" %>
       <p><span>Age:</span> <%= @pet.age %></p>
       <p><span>Sex:</span> <%= @pet.sex %></p>
       <p><span>Status:</span><%= @pet.status %></p>
