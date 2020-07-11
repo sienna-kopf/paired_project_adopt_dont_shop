@@ -2,6 +2,11 @@ class ApplicationsController < ApplicationController
   def new
   end
 
+  def show
+    @applicant = Applicant.find(params[:id])
+    @application_pets = PetApplication.pluck(:pet_id).uniq.map {|id| Pet.find(id)}
+  end
+
   def create
     application = Applicant.create(application_params)
     if !application.save

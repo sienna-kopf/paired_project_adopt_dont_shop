@@ -1,0 +1,26 @@
+<section class="hero is-medium has-text-centered" id="header">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Application <%= @applicant.id %>
+      </h1>
+    </div>
+  </div>
+</section>
+
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <p><span>Name:</span> <%= @applicant.name %></p>
+      <p><span>Address:</span> <%= @applicant.address %></p>
+      <p><span>City:</span><%= @applicant.city %></p>
+      <p><span>State:</span><%= @applicant.state %></p>
+      <p><span>Zip:</span><%= @applicant.zip %></p>
+      <p><span>Phone number:</span> <%= @applicant.phonenumber %></p>
+      <p><span>Description:</span> <%= @applicant.description %></p>
+      <% @application_pets.each do |pet| %>
+        <%= link_to pet.name, "/pets/#{pet.id}" %>
+      <% end %>
+    </div>
+  </div>
+</div>
