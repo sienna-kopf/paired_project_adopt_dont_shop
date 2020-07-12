@@ -37,6 +37,7 @@ class PetsController < ApplicationController
       params[:status] = "pending"
     else
       params[:status] = "adoptible"
+      @pet.applicants = []
     end
     @pet.update(pet_params)
     redirect_to "/pets/#{@pet.id}"
