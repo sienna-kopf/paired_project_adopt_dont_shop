@@ -32,6 +32,22 @@ RSpec.describe "approve pet", type: :feature do
     expect(page).to have_content("pending")
     expect(page).to have_content("piper")
     expect(page).to have_content("on hold for #{@application.name}")
+  end
+
+  it 'can update all' do
+    visit "/applications/#{@application.id}"
+
+    expect(page).to have_link("approve all")
+
+    click_on "approve all"
+
+    visit "/pets/#{@pet_2.id}"
+    expect(page).to have_content("pending")
+    expect(page).to have_content("on hold for #{@application.name}")
+
+    visit "/pets/#{@pet_1.id}"
+    expect(page).to have_content("pending")
+    expect(page).to have_content("on hold for #{@application.name}")
 
   end
 end
