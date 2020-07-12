@@ -43,4 +43,8 @@
       </a>
     </div>
     <% end %>
+
+    <footer class="card-footer">
+      <%= link_to "approve all", "/pets/#{@applicant.id}/approval?applicant=#{@applicant.id}&approve_all=true", method: :patch, class: "card-footer-item is-primary" %>
+    </footer>
 </div>
