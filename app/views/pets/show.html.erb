@@ -33,7 +33,7 @@
       <p><span>Status:</span><%= @pet.status %></p>
       <p><span>Description:</span> <%= @pet.description %></p>
       <% if @pet.status == "pending" %>
-          <p>on hold for <%= @pet.applicants[-1].name %></p>
+          <p>on hold for <%= @approved_applicant.name %></p>
       <% end %>
     </div>
   </div>
