@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
 
   def show
     @applicant = Applicant.find(params[:id])
-    @application_pets = PetApplication.pluck(:pet_id).uniq.map {|id| Pet.find(id)}
+    @application_pets = @applicant.pets
   end
 
   def create
