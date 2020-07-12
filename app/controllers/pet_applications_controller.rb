@@ -10,14 +10,14 @@ class PetApplicationsController < ApplicationController
     if params[:approve_all]
       applicant.pets.each do |pet|
         pet.update(pet_params)
-        pet.applicants = []
+        pet.applicants.delete(applicant)
         pet.applicants << applicant
       end
       return redirect_to "/pets"
     end
     pet = Pet.find(params[:pet_id])
     pet.update(pet_params)
-    pet.applicants = []
+    pet.applicants.delete(applicant)
     pet.applicants << applicant
 
     redirect_to "/pets/#{pet.id}"
