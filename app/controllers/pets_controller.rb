@@ -6,6 +6,7 @@ class PetsController < ApplicationController
 
   def show
     @fav_pets = favorites.pet_data
+    @pet.applicants.sort_by{|pet| pet.created_at}.reverse
   end
 
   def new

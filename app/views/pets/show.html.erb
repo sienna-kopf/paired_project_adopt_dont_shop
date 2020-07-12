@@ -33,9 +33,7 @@
       <p><span>Status:</span><%= @pet.status %></p>
       <p><span>Description:</span> <%= @pet.description %></p>
       <% if @pet.status == "pending" %>
-        <% @pet.applicants.each do |applicant| %>
-          <p>on hold for <%= applicant.name %></p>
-        <% end %>
+          <p>on hold for <%= @pet.applicants[-1].name %></p>
       <% end %>
     </div>
   </div>
