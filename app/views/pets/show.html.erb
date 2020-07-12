@@ -32,6 +32,11 @@
       <p><span>Sex:</span> <%= @pet.sex %></p>
       <p><span>Status:</span><%= @pet.status %></p>
       <p><span>Description:</span> <%= @pet.description %></p>
+      <% if @pet.status == "pending" %>
+        <% @pet.applicants.each do |applicant| %>
+          <p>on hold for <%= applicant.name %></p>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <footer class="card-footer">

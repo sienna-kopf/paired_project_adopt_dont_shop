@@ -18,9 +18,29 @@
       <p><span>Zip:</span><%= @applicant.zip %></p>
       <p><span>Phone number:</span> <%= @applicant.phonenumber %></p>
       <p><span>Description:</span> <%= @applicant.description %></p>
-      <% @application_pets.each do |pet| %>
-        <%= link_to pet.name, "/pets/#{pet.id}" %>
-      <% end %>
     </div>
   </div>
+</div>
+<h1>pets</h1>
+
+<div class="columns is-multiline">
+    <% @application_pets.each do |pet| %>
+    <div class="column is-3" id="pet_<%= pet.id %>">
+      <a href="/pets/<%= pet.id %>">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src=<%= pet.image %> alt="Placeholder image">
+        </figure>
+      </div>
+        <footer class="card-footer">
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
+        </footer>
+        <footer class="card-footer">
+        <%= link_to "Approve", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+        </footer>
+      </div>
+      </a>
+    </div>
+    <% end %>
 </div>
