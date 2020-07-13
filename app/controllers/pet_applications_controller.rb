@@ -6,22 +6,26 @@ class PetApplicationsController < ApplicationController
 
   def update
     applicant = Applicant.find(params[:applicant])
-    params[:status] = "pending"
-    if params[:approve_all]
-      applicant.pets.each do |pet|
-        add_pet(pet, applicant)
-      end
-      return redirect_to "/pets"
-    end
     pet = Pet.find(params[:pet_id])
+    if pet.status == 'adoptible' # "adoptable"
+      params[:status] = "pending"
+      if params[:approve_all]
+        applicant.pets.each do |pet|
+          add_pet(pet, applicant)
+        end
+        return redirect_to "/pets"
+      end
+      add_pet(pet, applicant)
 
-    if pet.status == 'pending'
-      flash[:error] = "No more applications can be approved for #{pet.name} at this time"
-      return redirect_to "/applications/#{applicant.id}"
+      redirect_to "/pets/#{pet.id}"
+    else
+      params[:status] = "adoptible"
+      # flash[:error] = "No more applications can be approved for #{pet.name} at this time"
+      # return redirect_to "/applications/#{applicant.id}"
+      add_pet(pet, applicant)
+
+      redirect_to "/applications/#{applicant.id}"
     end
-    add_pet(pet, applicant)
-
-    redirect_to "/pets/#{pet.id}"
   end
 
   private

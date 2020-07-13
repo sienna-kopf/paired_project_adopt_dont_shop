@@ -1,4 +1,3 @@
-
 class Favorite
   attr_reader :pet_data
   def initialize(pet_data)

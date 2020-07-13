@@ -5,6 +5,7 @@ class ApplicationsController < ApplicationController
   def show
     @applicant = Applicant.find(params[:id])
     @application_pets = @applicant.pets
+    ## call .pets from the view
   end
 
   def create
