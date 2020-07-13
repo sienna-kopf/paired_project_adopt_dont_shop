@@ -6,10 +6,12 @@ class PetsController < ApplicationController
 
   def show
     @fav_pets = favorites.pet_data
-    approved_applicant_id = PetApplication.where(pet_id: @pet.id).pluck(:applicant_id).last
-    if !approved_applicant_id.nil?
-      @approved_applicant = Applicant.find(approved_applicant_id)
-    end
+    # if !approved_applicant_id.nil?
+    #   @approved_applicant = Applicant.find(approved_applicant_id)
+    # end
+    # new recommended
+      @pet_application = PetApplication.where(pet_id: params[:pet_id], approval_status: 1).first
+
   end
 
   def new
