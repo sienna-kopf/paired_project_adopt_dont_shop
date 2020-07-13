@@ -5,22 +5,31 @@ class PetApplicationsController < ApplicationController
   end
 
   def update
-    applicant = Applicant.find(params[:applicant])
-    params[:status] = "pending"
-    if params[:approve_all]
-      applicant.pets.each do |pet|
-        pet.update(pet_params)
-        pet.applicants.delete(applicant)
-        pet.applicants << applicant
-      end
-      return redirect_to "/pets"
-    end
     pet = Pet.find(params[:pet_id])
-    pet.update(pet_params)
-    pet.applicants.delete(applicant)
-    pet.applicants << applicant
+    applicant = Applicant.find(params[:applicant])
+    if pet.status == 'adoptible'
+      params[:status] = "pending"
+      if params[:approve_all]
+        applicant.pets.each do |pet|
+          pet.update(pet_params)
+          pet.applicants.delete(applicant)
+          pet.applicants << applicant
+        end
+        return redirect_to "/pets"
+      end
+      pet.update(pet_params)
+      pet.applicants.delete(applicant)
+      pet.applicants << applicant
 
-    redirect_to "/pets/#{pet.id}"
+      redirect_to "/pets/#{pet.id}"
+    else
+      params[:status] = "adoptible"
+      pet.update(pet_params)
+      pet.applicants.delete(applicant)
+      pet.applicants << applicant
+
+      redirect_to "/applications/#{applicant.id}"
+    end
   end
 
   private
