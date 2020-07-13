@@ -9,7 +9,7 @@ class PetApplicationsController < ApplicationController
     params[:status] = "pending"
     if params[:approve_all]
       applicant.pets.each do |pet|
-        add_pet(pet)
+        add_pet(pet, applicant)
       end
       return redirect_to "/pets"
     end
@@ -19,7 +19,7 @@ class PetApplicationsController < ApplicationController
       flash[:error] = "No more applications can be approved for #{pet.name} at this time"
       return redirect_to "/applications/#{applicant.id}"
     end
-    add_pet(pet)
+    add_pet(pet, applicant)
 
     redirect_to "/pets/#{pet.id}"
   end
@@ -29,9 +29,9 @@ class PetApplicationsController < ApplicationController
     params.permit(:status)
   end
 
-  def add_pet(p)
-    p.update(pet_params)
-    p.applicants.delete(applicant)
-    p.applicants << applicant
+  def add_pet(pet,applicant)
+    pet.update(pet_params)
+    pet.applicants.delete(applicant)
+    pet.applicants << applicant
   end
 end
