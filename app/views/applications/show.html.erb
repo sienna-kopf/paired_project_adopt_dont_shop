@@ -43,8 +43,12 @@
         <footer class="card-footer">
         <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
         </footer>
-        <footer class="card-footer">
-        <%= link_to "Approve", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+        <footer class="card-footer" id="approval-status-<%= pet.id %>">
+          <% if pet.status == 'adoptible' %>
+            <%= link_to "Approve", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+          <% else %>
+            <%= link_to "Unapprove", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+          <% end  %>
         </footer>
       </div>
       </a>
