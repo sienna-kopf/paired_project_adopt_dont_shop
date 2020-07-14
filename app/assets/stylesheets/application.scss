@@ -15,7 +15,7 @@
  */
 
  @import "bulma";
- @import "font-awesome"; 
+ @import "font-awesome";
 
  $main_color: #eee;
 body{
@@ -85,5 +85,15 @@ section.fav-remove-pet {
 .approve-all-footer{
   .button.is-info{
     width: 100%;
+  }
+}
+
+.content.pet_info {
+    display: flex;
+    justify-content: space-around;
+
+    .pet_data {
+    display: flex;
+    flex-direction: column;
   }
 }
