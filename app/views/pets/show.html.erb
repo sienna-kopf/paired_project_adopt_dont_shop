@@ -32,8 +32,8 @@
       <p><span>Sex:</span> <%= @pet.sex %></p>
       <p><span>Status:</span><%= @pet.status %></p>
       <p><span>Description:</span> <%= @pet.description %></p>
-      <% if @pet.status == "pending" %>
-          <p>on hold for <%= @approved_applicant.name %></p>
+      <% if !@pet_application.nil? && @pet.status == "pending" %>
+          <p>on hold for <%= Applicant.find(@pet_application.applicant_id).name %></p>
       <% end %>
     </div>
   </div>
