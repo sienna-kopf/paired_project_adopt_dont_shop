@@ -8,14 +8,13 @@ class Shelter < ApplicationRecord
   end
 
   def average_rating
-    reviews.sum do |review|
-      review.rating
-    end / reviews.count
+    if self.reviews.size <= 0
+        return 0
+    end
+    self.reviews.average(:rating)
   end
 
   def count_applications
-    pets.sum do |pet|
-      pet.applicants.count
-    end
+    self.pets.where(status: 'pending').count
   end
 end

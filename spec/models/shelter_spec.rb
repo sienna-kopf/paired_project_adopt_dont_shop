@@ -12,6 +12,19 @@ RSpec.describe Shelter, type: :model do
   describe 'relationships' do
     it{should have_many :pets}
     it{should have_many :reviews}
+
+    it 'deletes all reviews when deleted' do
+      @shelter_1 = create(:shelter)
+      @shelter_2 = create(:shelter)
+      @review_1 = create(:review, title: "Great Experience!" , rating: 4, content: "Clean, Friendly staff.", shelter: @shelter_1)
+      @review_2 = create(:review, title: "Very organized" , rating: 4, content: "Easy to find a pet I love.", shelter: @shelter_2)
+      @review_3 = create(:review, title: "The pets are great!", rating: 3, content: "Loved the pet names.", shelter: @shelter_2)
+
+      @shelter_2.destroy
+
+      expect(Review.all.count).to eq(1)
+      expect(Review.all.first).to eq(@review_1)
+    end
   end
 
   describe 'methods' do

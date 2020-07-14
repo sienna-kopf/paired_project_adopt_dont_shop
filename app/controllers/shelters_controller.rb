@@ -17,6 +17,7 @@ class SheltersController < ApplicationController
   def create
     shelter = Shelter.create(shelter_params)
     if !shelter.save
+      flash[:errors] = shelter.errors.full_messages
       redirect_to "/shelters/new"
     else
       redirect_to "/shelters"
@@ -28,6 +29,10 @@ class SheltersController < ApplicationController
 
   def update
     @shelter.update(shelter_params)
+    if !@shelter.save
+      flash[:errors] = @shelter.errors.full_messages
+      return redirect_to "/shelters/#{@shelter.id}/edit"
+    end
     redirect_to "/shelters/#{@shelter.id}"
   end
 

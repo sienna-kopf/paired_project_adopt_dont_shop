@@ -46,4 +46,16 @@ RSpec.describe "Update shelter" do
     expect(page).to have_content(@shelter_1.zip)
   end
 
+  it 'flash errors if not saved' do
+    visit "/shelters/#{@shelter_1.id}/edit"
+
+    fill_in :name, with: "Kwibes Shelter"
+    fill_in :address, with: ""
+    fill_in :city, with: "Denver"
+
+    click_on "update"
+
+    expect(page).to have_content("Address can't be blank")
+  end
+
 end

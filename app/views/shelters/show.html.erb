@@ -10,7 +10,7 @@
 
 <% if flash[:notice] %>
   <% flash.each do |key, message| %>
-  <div class="notification is-warning">
+  <div class="notification is-danger">
     <%= message %>
   </div>
   <% end %>
@@ -24,9 +24,7 @@
       <p><span>State:</span> <%= @shelter.state %></p>
       <p><span>Zip:</span> <%= @shelter.zip %></p>
       <p><span>Pet count:</span> <%= @shelter.pet_count %></p>
-      <% if !@shelter.reviews.empty? %>
-        <p><span>Average rating:</span> <%= @shelter.average_rating %></p>
-      <% end %>
+      <p><span>Average rating:</span> <%= @shelter.average_rating %></p>
       <p><span>Applications count:</span> <%= @shelter.count_applications %></p>
     </div>
   </div>

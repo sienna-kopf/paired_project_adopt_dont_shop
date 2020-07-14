@@ -8,6 +8,15 @@
       </div>
     </div>
   </div>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do | message| %>
+    <div class="notification is-danger">
+      <%= message %>
+    </div>
+    <% end %>
+  <% end %>
+
   <%= form_tag"/shelters/#{@shelter.id}", method: :patch do %>
   <div class="field">
     <%= label_tag :name, nil, class: "label" %>
@@ -34,7 +43,7 @@
             'OR', 'PW', 'PA', 'PR',
              'RI', 'SC', 'SD', 'TN',
              'TX', 'UT', 'VT', 'VI', 'VA',
-             'WA', 'WV', 'WI', 'WY' ],@shelter.state),
+             'WA', 'WV', 'WI', 'WY' ],@shelter.state),prompt: "Choose state",
               class: "input" %>
 
           </div>
