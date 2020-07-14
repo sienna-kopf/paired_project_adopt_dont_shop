@@ -22,6 +22,9 @@ RSpec.describe 'visit /shelter/:id', type: :feature do
       fill_in :zip, with: "76025"
 
       click_button "Submit"
+
+      expect(page).to have_content("Address can't be blank")
+      expect(page).to have_content("Name can't be blank")
       expect(current_path).to eq("/shelters/new")
     end
 
