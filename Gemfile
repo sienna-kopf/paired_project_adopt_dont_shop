@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bulma-rails', '~> 0.9.0'
+gem "font-awesome-rails"
 
 gem 'faker', '~> 2.13'
 gem 'factory_bot_rails', '~> 6.0'

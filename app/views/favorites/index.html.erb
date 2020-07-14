@@ -16,44 +16,64 @@
   </div>
   <% end %>
 <% end %>
-<% if favorites.pet_data.empty? %>
-  <p>no favorited pets</p>
-<% else %>
-<section class="fav-adopt">
-  <%= link_to "adopt favorites", "/applications/new", class: "button is-info" %>
-</section>
-<section class="cards">
-<div class="columns is-multiline">
-    <% @pets.each do |pet| %>
-    <div class="column is-3" id="pet_<%= pet.id %>">
-      <a href="/pets/<%= pet.id %>">
-    <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img src=<%= pet.image %> alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="card-content">
-        Shelter name:   <%= link_to  "#{pet.shelter.name}", "/shelters/#{pet.shelter_id}"%>
-      </div>
-        <footer class="card-footer">
-        <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
-        </footer>
-        <section class="fav-remove-pet" id="pet-<%= pet.id%>">
-          <%= link_to "remove from favorites", "/favorites/#{pet.id}", method: :delete %>
-        </section>
-      </div>
-      </a>
+
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-9">
+    <% if favorites.pet_data.empty? %>
+    <p class="title is-1">no favorited pets</p>
+    <% else %>
+
+    <section class="fav-adopt">
+      <%= link_to "adopt favorites", "/applications/new", class: "button is-info" %>
+    </section>
+    <section class="cards">
+    <div class="columns is-multiline">
+        <% @pets.each do |pet| %>
+        <div class="column is-4" id="pet_<%= pet.id %>">
+          <a href="/pets/<%= pet.id %>">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src=<%= pet.image %> alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            Shelter name:   <%= link_to  "#{pet.shelter.name}", "/shelters/#{pet.shelter_id}"%>
+          </div>
+            <footer class="card-footer">
+            <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
+            </footer>
+            <section class="fav-remove-pet" id="pet-<%= pet.id%>">
+              <%= link_to "remove from favorites", "/favorites/#{pet.id}", method: :delete %>
+            </section>
+          </div>
+          </a>
+        </div>
+        <% end %>
     </div>
+    </section>
+    <section class="fav_footer">
+      <%= link_to "remove all favorited pets", "/favorites", method: :delete , class: "button is-danger"%>
+    </section>
     <% end %>
+
+  </div>
+
+  <div class="tile is-parent">
+    <article class="tile is-child">
+      <div class="content">
+        <p class="panel-heading">
+          Most Favorited Pets
+        </p>
+        <% @application_pets.each do |pet| %>
+          <a class="panel-block is-active" href="/pets/<%= pet.id %>">
+            <span class="panel-icon">
+              <i class="fa fa-paw"" aria-hidden="true"></i>
+            </span>
+            <%= pet.name %>
+          </a>
+        <% end %>
+      </div>
+    </article>
+  </div>
 </div>
-</section>
-<section class="fav_footer">
-  <%= link_to "remove all favorited pets", "/favorites", method: :delete , class: "button is-danger"%>
-</section>
-<% end %>
-<section id="application_pets">
-  <% @application_pets.each do |pet| %>
-    <%= link_to pet.name, "/pets/#{pet.id}" %>
-  <% end %>
-</section>
