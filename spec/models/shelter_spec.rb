@@ -36,7 +36,7 @@ RSpec.describe Shelter, type: :model do
       expect(@shelter_2.pet_count).to eq(3)
     end
 
-    xit 'average_rating' do
+    it 'average_rating' do
       expect(@shelter_1.average_rating).to eq(4)
       expect(@shelter_2.average_rating).to eq(3)
     end
