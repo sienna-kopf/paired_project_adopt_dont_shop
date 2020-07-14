@@ -34,6 +34,12 @@ class PetsController < ApplicationController
   end
 
   def destroy
+    pet_applications = PetApplication.where(pet_id: params[:pet_id])
+
+    if pet_applications.any? {|pet_application| pet_application.approval_status == 1}
+      flash[:notice] = "Cannot delete: Pet has approved application"
+      return redirect_to "/pets/#{params[:pet_id]}"
+    end
     Pet.destroy(params[:pet_id])
     redirect_to "/pets"
   end
