@@ -2,7 +2,7 @@
 require "rails_helper"
 
 RSpec.describe 'favorite removal', type: :feature do
-  before :all do
+  before :each do
     @shelter_1 = create(:shelter)
     @shelter_2 = create(:shelter)
     @pet_1 = create(:pet, name: "persy", age: 8, sex: "male", shelter: @shelter_1)
@@ -25,11 +25,12 @@ RSpec.describe 'favorite removal', type: :feature do
     expect(page).to have_link("#{@pet_3.name}")
 
     click_link "remove all favorited pets"
-
     expect(current_path).to eq("/favorites")
-    expect(page).to have_content("no favorited pets")
     expect(page).to have_content("favorites: 0")
-    expect(page).to_not have_link("#{@pet_2.name}")
-    expect(page).to_not have_link("#{@pet_3.name}")
+    within ".is-vertical" do
+      expect(page).to have_content("no favorited pets")
+      expect(page).to_not have_link(@pet_2.name)
+      expect(page).to_not have_link("#{@pet_3.name}")
+    end
   end
 end
