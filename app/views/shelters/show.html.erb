@@ -7,6 +7,15 @@
     </div>
   </div>
 </section>
+
+<% if flash[:notice] %>
+  <% flash.each do |key, message| %>
+  <div class="notification is-warning">
+    <%= message %>
+  </div>
+  <% end %>
+<% end %>
+
 <div class="card">
   <div class="card-content">
     <div class="content">
@@ -15,7 +24,9 @@
       <p><span>State:</span> <%= @shelter.state %></p>
       <p><span>Zip:</span> <%= @shelter.zip %></p>
       <p><span>Pet count:</span> <%= @shelter.pet_count %></p>
-      <p><span>Average rating:</span> <%= @shelter.average_rating %></p>
+      <% if !@shelter.reviews.empty? %>
+        <p><span>Average rating:</span> <%= @shelter.average_rating %></p>
+      <% end %>
       <p><span>Applications count:</span> <%= @shelter.count_applications %></p>
     </div>
   </div>
