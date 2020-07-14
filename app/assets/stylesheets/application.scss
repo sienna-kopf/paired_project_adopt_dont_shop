@@ -74,3 +74,14 @@ section.fav-remove-pet {
       padding: 13px 65px;
     }
 }
+
+.tag.is-success.approved{
+  position: absolute;
+  width: 100%;
+}
+
+.approve-all-footer{
+  .button.is-info{
+    width: 100%;
+  }
+}

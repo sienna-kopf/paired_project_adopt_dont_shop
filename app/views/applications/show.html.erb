@@ -36,6 +36,9 @@
       <a href="/pets/<%= pet.id %>">
     <div class="card">
       <div class="card-image">
+        <% if PetApplication.where(pet_id: pet.id).any?{|a_p| a_p.approval_status == 1} %>
+          <span class="tag is-success approved">Already approved</span>
+        <% end %>
         <figure class="image is-4by3">
           <img src=<%= pet.image %> alt="Placeholder image">
         </figure>
@@ -44,10 +47,10 @@
         <%= link_to "#{pet.name}", "/pets/#{pet.id}", class: "card-footer-item is-primary" %>
         </footer>
         <footer class="card-footer" id="approval-status-<%= pet.id %>">
-          <% if pet.status == 'adoptible' %>
-            <%= link_to "Approve", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+          <% if PetApplication.where(pet_id: pet.id, applicant_id: @applicant.id).any?{|a_p| a_p.approval_status == 0} %> <%# refactor %>
+            <%= link_to "Approve", "/pets/#{pet.id}/applications/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
           <% else %>
-            <%= link_to "Unapprove", "/pets/#{pet.id}/approval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
+            <%= link_to "Unapprove", "/pets/#{pet.id}/applications/unapproval?applicant=#{@applicant.id}", method: :patch, class: "card-footer-item is-primary" %>
           <% end  %>
         </footer>
       </div>
@@ -55,7 +58,9 @@
     </div>
     <% end %>
 
-    <footer class="card-footer">
-      <%= link_to "approve all", "/pets/#{@applicant.id}/approval?applicant=#{@applicant.id}&approve_all=true", method: :patch, class: "card-footer-item is-primary" %>
-    </footer>
 </div>
+<% if @applicant.pets.count > 1 %>
+  <section class="approve-all-footer">
+    <%= link_to "approve all", "/pets/#{@applicant.id}/applications/approve_all?applicant=#{@applicant.id}", method: :patch, class: "button is-info" %>
+</section>
+<% end %>
