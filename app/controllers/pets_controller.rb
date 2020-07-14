@@ -40,7 +40,8 @@ class PetsController < ApplicationController
       flash[:notice] = "Cannot delete: Pet has approved application"
       return redirect_to "/pets/#{params[:pet_id]}"
     end
-    Pet.destroy(params[:pet_id])
+    pet = Pet.find(params[:pet_id])
+    pet.destroy
     redirect_to "/pets"
   end
 
