@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'shelter can delete pet', type: :feature do
+RSpec.describe 'user can delete pet', type: :feature do
   before :each do
     @shelter_1 = create(:shelter)
     @shelter_2 = create(:shelter)
@@ -10,7 +10,7 @@ RSpec.describe 'shelter can delete pet', type: :feature do
     @pet_4 = create(:pet , shelter:@shelter_2 )
   end
 
-  xit 'can delete pet' do
+  it 'can delete pet' do
     visit "/pets/#{@pet_3.id}"
 
     click_on "Delete Pet"
@@ -18,5 +18,17 @@ RSpec.describe 'shelter can delete pet', type: :feature do
     expect(current_path).to eq("/pets")
 
     expect(page).not_to have_content("holie")
+  end
+
+  it 'when pet is deleted it is also removed from favorites' do
+    visit "/pets/#{@pet_1.id}"
+
+    click_link "add to favorites" 
+
+    click_on "Delete Pet"
+
+    visit "/favorites"
+
+    expect(page).to_not have_content("persy")
   end
 end
