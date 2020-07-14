@@ -15,7 +15,9 @@ class FavoritesController <  ApplicationController
   end
 
   def index
-    @pets = favorites.find_pets.reverse
+    if !favorites.pet_data.empty?
+      @pets = favorites.find_pets.reverse
+    end
     @application_pets = PetApplication.pluck(:pet_id).uniq.map {|id| Pet.find(id)}
     ## only pass one thing to the view
   end

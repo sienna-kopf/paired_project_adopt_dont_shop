@@ -6,12 +6,7 @@ class PetsController < ApplicationController
 
   def show
     @fav_pets = favorites.pet_data
-    # if !approved_applicant_id.nil?
-    #   @approved_applicant = Applicant.find(approved_applicant_id)
-    # end
-    # new recommended
-      @pet_application = PetApplication.where(pet_id: params[:pet_id], approval_status: 1).first
-
+    @pet_application = PetApplication.where(pet_id: params[:pet_id], approval_status: 1).first
   end
 
   def new
@@ -41,6 +36,10 @@ class PetsController < ApplicationController
       return redirect_to "/pets/#{params[:pet_id]}"
     end
     pet = Pet.find(params[:pet_id])
+    if favorites.pet_data.include?(pet.id)
+      favorites.remove_pet(pet.id)
+      pet.destroy
+    end
     pet.destroy
     redirect_to "/pets"
   end
