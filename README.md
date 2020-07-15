@@ -31,7 +31,7 @@
 
 **Database Schema:**
 
-![database schema](https://turingschool.slack.com/files/UUTU0304R/F017BKXEL76/paired_project_mod_2__1_.png)
+![database schema](https://f000.backblazeb2.com/file/MarkdownImages/Paired+Project+mod+2+(1).png)
 
 **Project by:** [Sienna Kopf](https://gist.github.com/sienna-kopf) & [Kwibe Merci](https://github.com/jKwibe)
 
