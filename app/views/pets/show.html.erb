@@ -1,12 +1,4 @@
-<section class="hero is-medium has-text-centered" id="header">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        <%= @pet.name %>
-      </h1>
-    </div>
-  </div>
-</section>
+<%= render partial: '/partials/hero', locals: {page_title: @pet.name} %>
 
 <% if flash %>
   <% flash.each do |key, message| %>

@@ -1,17 +1,5 @@
 
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          <%= @pet.shelter.name %>
-        </h1>
-        <h2 class="subtitle">
-          edit pet: <%= @pet.name %>
-        </h2>
-      </div>
-    </div>
-  </div>
+<%= render partial: '/partials/hero', locals: {page_title: "Edit Pet: #{@pet.name}"} %>
 
   <% if flash[:errors] %>
     <% flash[:errors].each do | message| %>
@@ -20,7 +8,7 @@
     </div>
     <% end %>
   <% end %>
-  
+
   <%= form_tag "/pets/#{@pet.id}", method: :patch  do %>
   <div class="field">
     <%= label_tag :name, nil, class: "label" %>
@@ -48,4 +36,3 @@
   </div>
   <%= submit_tag 'Update Pet', class: "button is-primary" %>
   <% end %>
-</section>

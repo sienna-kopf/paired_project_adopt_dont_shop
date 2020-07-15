@@ -1,13 +1,5 @@
 
-<section class="hero is-medium has-text-centered">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Shelters
-      </h1>
-    </div>
-  </div>
-</section>
+<%= render partial: '/partials/hero', locals: {page_title: "Shelters"} %>
 <%= link_to "sort A-Z", "/shelters?sort=true", class: "button is-primary" %>
 <% @shelters.each do |shelter| %>
 

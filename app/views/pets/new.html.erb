@@ -1,13 +1,4 @@
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          <%= @shelter.name %>
-        </h1>
-      </div>
-    </div>
-  </div>
+<%= render partial: '/partials/hero', locals: {page_title: @shelter.name} %>
 
   <% if flash[:errors] %>
     <% flash[:errors].each do | message| %>
@@ -16,7 +7,7 @@
     </div>
     <% end %>
   <% end %>
-  
+
   <%= form_tag "/shelters/#{@shelter.id}/pets", method: :post  do %>
     <div class="field">
       <%= label_tag :name, nil, class: "label" %>

@@ -1,13 +1,4 @@
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-           Add Review to <%= @shelter.name %>
-        </h1>
-      </div>
-    </div>
-  </div>
+<%= render partial: '/partials/hero', locals: {page_title: "Add Review to #{@shelter.name}"} %>
 
   <% if flash[:notice] %>
   <% flash[:notice].each do |message| %>

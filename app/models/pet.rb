@@ -4,4 +4,8 @@ class Pet < ApplicationRecord
   enum sex: {male: "male", female:"female"}
   has_many :pet_applications, dependent: :delete_all
   has_many :applicants, through: :pet_applications
+
+  def count_applicants
+    self.applicants.count
+  end
 end

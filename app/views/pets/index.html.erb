@@ -1,12 +1,2 @@
-<section class="hero is-medium has-text-centered">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Pets
-      </h1>
-
-      <p>All pets count: <%= @pets.count %></p>
-    </div>
-  </div>
-</section>
+<%= render partial: '/partials/hero', locals: {page_title: "Pet count: #{@pets.count}"} %>
 <%= render 'partials/cards' %>
