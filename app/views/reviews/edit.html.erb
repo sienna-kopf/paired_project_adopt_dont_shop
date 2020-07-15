@@ -1,14 +1,5 @@
 
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Edit Review
-        </h1>
-      </div>
-    </div>
-  </div>
+<%= render partial: '/partials/hero', locals: {page_title: "Edit Review"} %>
 
   <% if flash[:errors]  %>
     <% flash[:errors].each do |error| %>

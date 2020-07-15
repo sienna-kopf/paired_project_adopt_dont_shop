@@ -1,14 +1,4 @@
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Favorite Pets
-        </h1>
-      </div>
-    </div>
-  </div>
-</section>
+<%= render partial: '/partials/hero', locals: {page_title: "Favorite Pets"} %>
 <% if flash %>
   <% flash.each do |key, message| %>
   <div class="notification is-success">

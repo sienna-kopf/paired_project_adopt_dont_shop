@@ -1,15 +1,5 @@
 
-<section class="form_container">
-  <div class="hero is-medium has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Add Shelter
-        </h1>
-      </div>
-    </div>
-  </div>
-
+  <%= render partial: '/partials/hero', locals: {page_title: "Add Shelter"} %>
   <% if flash[:errors] %>
     <% flash[:errors].each do | message| %>
     <div class="notification is-danger">
@@ -58,4 +48,3 @@
   </div>
   <%= submit_tag 'Submit', class: "button is-primary" %>
   <% end %>
-</section>

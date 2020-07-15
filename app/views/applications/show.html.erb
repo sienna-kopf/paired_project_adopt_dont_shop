@@ -1,12 +1,5 @@
-<section class="hero is-medium has-text-centered" id="header">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Application <%= @applicant.id %>
-      </h1>
-    </div>
-  </div>
-</section>
+
+<%= render partial: '/partials/hero', locals: {page_title: "Application #{@applicant.id}"} %>
 <% if flash[:error] %>
 <div class="notification is-danger is-light">
   <%= flash[:error] %>
@@ -27,7 +20,7 @@
   </div>
 </div>
 
-<h1>pets</h1>
+<h1 class="title is-4">pets</h1>
 
 
 <div class="columns is-multiline">
