@@ -33,4 +33,29 @@ RSpec.describe 'shelter can update pet', type: :feature do
     expect(page).to have_content("4")
     expect(page).to have_content("male")
   end
+
+  it 'displays flash message when one form field is incomplete' do
+    visit "/pets/#{@pet_2.id}/edit"
+
+    fill_in :name, with: ""
+    fill_in :age, with: "4"
+    select "male", from: :sex
+
+    click_on "Update Pet"
+
+    expect(page).to have_content("Name can't be blank")
+  end
+
+  it 'displays flash message when multiple form fields are incomplete' do
+    visit "/pets/#{@pet_2.id}/edit"
+
+    fill_in :name, with: ""
+    fill_in :age, with: ""
+    select "male", from: :sex
+
+    click_on "Update Pet"
+
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Age can't be blank")
+  end
 end
