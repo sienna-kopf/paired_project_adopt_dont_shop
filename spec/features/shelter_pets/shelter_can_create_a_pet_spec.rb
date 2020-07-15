@@ -4,10 +4,6 @@ RSpec.describe 'Shelter can create a pet' do
   before :each do
     @shelter_1 = create(:shelter)
     @shelter_2 = create(:shelter)
-    @pet_1 = create(:pet, name: "persy", age: 8, sex: "male", shelter: @shelter_1)
-    @pet_2 = create(:pet, name: "piper", age: 12, sex: "female", shelter: @shelter_2)
-    @pet_3 = create(:pet, name: "holie", age: 4, sex: "female", shelter: @shelter_1)
-    @pet_4 = create(:pet , shelter:@shelter_2 )
   end
 
   it 'has a link to create new pets' do
@@ -40,5 +36,34 @@ RSpec.describe 'Shelter can create a pet' do
       expect(page).to have_content("8")
       expect(page).to have_css("img[src*='percy.jpg']")
     end
+  end
+
+  it 'displays flash message when one form field is incomplete' do
+    visit "/shelters/#{@shelter_2.id}/pets/new"
+
+    fill_in :name , with: "Percy"
+    fill_in :description , with: ""
+    select "male", from: :sex
+    fill_in :age , with: "8"
+    fill_in :image , with: "percy.jpg"
+
+    click_on "Create Pet"
+
+    expect(page).to have_content("Description can't be blank")
+  end
+
+  it 'displays flash message when multiple form fields are incomplete' do
+    visit "/shelters/#{@shelter_2.id}/pets/new"
+
+    fill_in :name , with: ""
+    fill_in :description , with: ""
+    select "male", from: :sex
+    fill_in :age , with: "4"
+
+    click_on "Create Pet"
+
+    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Image can't be blank")
   end
 end
