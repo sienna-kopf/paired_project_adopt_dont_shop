@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :find_pet, only: [:show, :update,:edit, :adoptible]
+  before_action :find_pet, only: [:show, :update, :edit, :adoptible]
   def index
     @pets = Pet.all
   end
@@ -15,8 +15,14 @@ class PetsController < ApplicationController
 
   def create
     shelter = Shelter.find(params[:shelter_id])
-    @pet = shelter.pets.create(pet_params)
-    redirect_to "/pets"
+    pet = shelter.pets.create(pet_params)
+    if !pet.save
+      flash[:errors] = pet.errors.full_messages
+      redirect_to "/shelters/#{shelter.id}/pets/new"
+    else
+      pet.save
+      redirect_to "/pets"
+    end
   end
 
   def edit
@@ -24,6 +30,10 @@ class PetsController < ApplicationController
 
   def update
     @pet.update(pet_params)
+    if !@pet.save
+      flash[:errors] = @pet.errors.full_messages
+      return redirect_to "/pets/#{@pet.id}/edit"
+    end
 
     redirect_to "/pets/#{@pet.id}"
   end

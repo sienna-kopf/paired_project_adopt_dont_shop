@@ -12,6 +12,15 @@
       </div>
     </div>
   </div>
+
+  <% if flash[:errors] %>
+    <% flash[:errors].each do | message| %>
+    <div class="notification is-danger">
+      <%= message %>
+    </div>
+    <% end %>
+  <% end %>
+  
   <%= form_tag "/pets/#{@pet.id}", method: :patch  do %>
   <div class="field">
     <%= label_tag :name, nil, class: "label" %>
