@@ -15,6 +15,8 @@ class Shelter < ApplicationRecord
   end
 
   def count_applications
-    self.pets.where(status: 'pending').count
+    pets.sum do |pet|
+      pet.applicants.count
+    end
   end
 end
