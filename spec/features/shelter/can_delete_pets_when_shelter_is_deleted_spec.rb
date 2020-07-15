@@ -10,7 +10,7 @@ RSpec.describe 'delere asociated pets with shelter' , type: :feature do
     @pet_4 = create(:pet ,name: "Harry", shelter:@shelter_2 )
   end
 
-  xit 'can delete pets when shelter is deleted' do
+  it 'can delete pets when shelter is deleted' do
     visit "/shelters"
 
     within "div#shelter_#{@shelter_1.id}" do
