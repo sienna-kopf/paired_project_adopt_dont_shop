@@ -17,4 +17,9 @@ class Shelter < ApplicationRecord
   def count_applications
     self.pets.where(status: 'pending').count
   end
+
+  def self.top_three_rating
+    shelter_id_with_average = Hash[self.all.map{|shelter| [shelter.id,shelter.average_rating]}.sort.reverse[0..2]]
+    shelter_id_with_average.map{|id,_| Shelter.find(id)}
+  end
 end

@@ -4,6 +4,7 @@ class SheltersController < ApplicationController
     if params[:sort]
       return @shelters = Shelter.order(:name)
     end
+    binding.pry
     @shelters = Shelter.all
   end
 
