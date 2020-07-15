@@ -2,7 +2,7 @@
 require "rails_helper"
 
 RSpec.describe 'favorite creation', type: :feature do
-  before :all do
+  before :each do
     @shelter_1 = create(:shelter)
     @shelter_2 = create(:shelter)
     @pet_1 = create(:pet, name: "persy", age: 8, sex: "male", shelter: @shelter_1)

@@ -16,6 +16,7 @@ RSpec.describe 'user can delete pet', type: :feature do
     click_on "Delete Pet"
 
     expect(current_path).to eq("/pets")
+    save_and_open_page
 
     expect(page).not_to have_content("holie")
   end
@@ -23,7 +24,7 @@ RSpec.describe 'user can delete pet', type: :feature do
   it 'when pet is deleted it is also removed from favorites' do
     visit "/pets/#{@pet_1.id}"
 
-    click_link "add to favorites" 
+    click_link "add to favorites"
 
     click_on "Delete Pet"
 

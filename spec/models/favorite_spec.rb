@@ -2,7 +2,7 @@
 require "rails_helper"
 
 RSpec.describe Favorite do
-  before :all do
+  before :each do
     @favorite = Favorite.new(Array.new(0))
     @shelter_1 = create(:shelter)
     @shelter_2 = create(:shelter)
