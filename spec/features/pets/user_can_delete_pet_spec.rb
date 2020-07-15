@@ -16,7 +16,6 @@ RSpec.describe 'user can delete pet', type: :feature do
     click_on "Delete Pet"
 
     expect(current_path).to eq("/pets")
-    save_and_open_page
 
     expect(page).not_to have_content("holie")
   end
