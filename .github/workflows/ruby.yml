@@ -59,6 +59,7 @@ jobs:
       - name: Test backend
         env:
           PGHOST: localhost
+          PGPASSWORD: postgres
         run: |
           bin/setup
           bundle exec rspec
