@@ -61,6 +61,11 @@ jobs:
           PGHOST: localhost
           PGPASSWORD: postgres
         run: |
-          bin/setup
-          bundle exec rspec
+           if lsof -Pi :5432 -sTCP:LISTEN -t >/dev/null ; then
+            echo "running"
+           else
+            echo "not running"
+           fi
+           bin/setup
+           bundle exec rspec
       
