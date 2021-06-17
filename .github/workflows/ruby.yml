@@ -57,6 +57,8 @@ jobs:
         run: sudo apt-get -yqq install libpq-dev
 
       - name: Test backend
+        env:
+          PGHOST: localhost
         run: |
           bin/setup
           bundle exec rspec
