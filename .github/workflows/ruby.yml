@@ -58,8 +58,10 @@ jobs:
 
       - name: Test backend
         env:
-          PGHOST: localhost
-          PGPASSWORD: postgres
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
         run: |
            if lsof -Pi :5432 -sTCP:LISTEN -t >/dev/null ; then
             echo "running"
