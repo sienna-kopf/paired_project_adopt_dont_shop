@@ -13,7 +13,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # We could move this to it's own workflow that only runs when package.json is updated
-  cache-job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Cache node modules
